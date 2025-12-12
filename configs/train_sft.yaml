@@ -1,0 +1,39 @@
+seed: 42
+epochs: 10
+train_batch_size: 4
+eval_batch_size: 4
+num_workers: 4
+max_length: 1024
+use_ema: true
+ema_decay: 0.9999
+gradient_accumulation_steps: 4
+output_dir: ./outputs/sft
+eval_every_steps: 0       # 0 表示每个 epoch 评估一次
+metric_for_best: val_dice # 可选 val_dice / val_loss
+resume_from: ""           # 非空则从此路径恢复
+save_every_steps: 0       # 0 表示不按 step 额外保存
+log_dir: ""               # 非空则启用 TensorBoard 日志
+log_every_steps: 100      # TensorBoard 记录频率（步数）
+tuning_modules: []        # 可选：按名称子串局部解冻参数，如 ["visual", "embedding"]
+
+optimizer:
+  lr: 3.0e-5
+  lora_lr: 2.0e-4
+  lora_weight_decay: 0.0
+  weight_decay: 0.01
+  betas: [0.9, 0.98]
+
+scheduler:
+  type: cosine
+  warmup_steps: 500
+
+freeze:
+  qwen_vision: true
+  qwen_language: true
+
+loss_weight:
+  seg: 1.0
+  slot: 1.0
+  dice: 5.0
+  focal: 20.0
+  score: 1.0

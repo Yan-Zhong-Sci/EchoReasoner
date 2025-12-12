@@ -1,0 +1,54 @@
+base_model:
+  name: Qwen2.5-VL-3B-Instruct
+  load_lora: true
+  # LoRA 配置（全局缺省）
+  lora_r: 8
+  lora_alpha: 16
+  lora_dropout: 0.05
+  # 文本/视觉独立超参（留空则回退到上面的全局值）
+  lora_r_llm: null
+  lora_r_visual: null
+  lora_alpha_llm: null
+  lora_alpha_visual: null
+  lora_dropout_llm: null
+  lora_dropout_visual: null
+  # 文本 / 视觉独立控制
+  lora_layer_type_llm: qkvo       # qkvo | linear
+  lora_layer_type_visual: qkvo    # qkvo | linear
+  lora_target_modules_llm: null   # 为空则自动发现
+  lora_target_modules_visual: null
+  lora_include_llm: true
+  lora_include_visual: true
+  # 兼容旧字段（如填则覆盖自动发现）
+  lora_target_modules: null
+  lora_layer_type: qkvo
+  lora_modules_scope: all
+  vision_hidden_size: 1024
+  text_hidden_size: 2048
+  vision_patch_size: 14
+  special_tokens: ["<SEG#1>", "<EVIDENCE>", "</EVIDENCE>"]
+  vision_layers: [-19, -13, -7, -1]
+
+text_guided_cropper:
+  hidden_dim: 256
+  topk_ratio: 0.2
+  background_scale: 0.5
+
+pixel_decoder:
+  hidden_dim: 256
+  num_queries: 120
+  num_layers: 8
+  num_heads: 8
+  num_points: 4
+  dropout: 0.1
+  pretrained_path: ""
+  pretrained_strict: false
+  freeze: false
+
+bridge:
+  seg_token: "<SEG#1>"
+  evidence_token: "<EVIDENCE>"
+  max_masks: 5
+
+slot_reasoner:
+  max_answer_len: 160

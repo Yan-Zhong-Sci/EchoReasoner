@@ -1,0 +1,24 @@
+data_root: "/path/to/data_root"
+
+datasets:
+  # 可按需启用/禁用不同任务数据
+  facility_seg_reason:
+    enable: true
+    # 只需填写数据集目录，内部默认 labels/ann.json + images/ + masks/
+    train_dir: "/path/to/facility/train"
+    val_dir: "/path/to/facility/val"
+    test_dir: "/path/to/facility/test"
+  region_seg_reason:
+    enable: false
+    train_dir: ""
+    val_dir: ""
+    test_dir: ""
+  disaster_decision:
+    enable: false
+    train_dir: ""
+    val_dir: ""
+    test_dir: ""
+
+mask_mapping:
+  background: 0
+  target: 1

@@ -1,0 +1,11 @@
+mask_score_thresh: 0.3
+mask_prob_thresh: 0.5
+min_area: 64
+mask_nms: true
+mask_nms_thresh: 0.5
+max_masks: 5
+use_tta: false
+generation:
+  max_new_tokens: 256
+  temperature: 0.7
+  top_p: 0.9

@@ -1,0 +1,33 @@
+seed: 42
+epochs: 3
+train_batch_size: 2
+num_workers: 4
+output_dir: ./outputs/grpo
+save_every_steps: 0   # 0 表示不按 step 额外保存，只有每个 epoch 保存 last
+resume_from: ""       # 路径非空则自动 load
+eval_every_steps: 0   # 0 表示每个 epoch 评估一次（若提供 eval 集）
+metric_for_best: val_reward
+log_dir: ""           # 非空则启用 TensorBoard 日志
+log_every_steps: 100  # TensorBoard 记录频率（步数）
+tuning_modules: []    # 可选：按名称子串局部解冻参数
+sampling:
+  k: 4
+  temperature: 1.0
+  top_p: 0.9
+optimizer:
+  lr: 1.0e-5
+  lora_lr: 1.0e-4
+  lora_weight_decay: 0.0
+  weight_decay: 0.0
+scheduler:
+  type: cosine
+  warmup_steps: 200
+freeze:
+  qwen_vision: true
+  qwen_language: true
+  pixel_decoder: false
+  bridge: false
+  slot_reasoner: false
+reward_weight:
+  pixel: 1.0
+  text: 1.0

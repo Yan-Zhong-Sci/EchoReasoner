@@ -1,0 +1,21 @@
+# Core
+torch>=2.2.0
+torchvision>=0.17.0
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Vision / models
+timm>=0.9.8
+Pillow>=10.0.0
+
+# Language models
+transformers>=4.40.0
+sentencepiece>=0.1.99
+accelerate>=0.29.0
+PyYAML>=6.0.0
+
+# Parameter-efficient finetuning / formats / utils
+peft>=0.11.0
+safetensors>=0.4.2
+nncore>=0.5.4
+tqdm>=4.66.0
